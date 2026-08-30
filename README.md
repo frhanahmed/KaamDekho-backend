@@ -413,9 +413,3 @@ Potential improvements include:
 * Global exception handling
 * API validation
 * CI/CD automation
-
-https://github.com/frhanahmed/KaamDekho-backend
-
-### Live Backend API
-
-https://kaamdekho-backend-ct8k.onrender.com
