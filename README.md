@@ -90,7 +90,7 @@ The backend follows a layered architecture:
 * **Maven** — Dependency management and build automation.
 * **Docker** — Containerization support through the project's Dockerfile.
 
-The project's Maven configuration specifies Java 21, Spring Boot 4.1.1, Spring Web MVC, Spring Data JPA, PostgreSQL, and Lombok. :contentReference[oaicite:15]{index=15}
+The project's Maven configuration specifies Java 21, Spring Boot 4.1.1, Spring Web MVC, Spring Data JPA, PostgreSQL, and Lombok.
 
 ---
 
@@ -108,7 +108,7 @@ reqExperience
 postTechStack
 ```
 
-The entity is mapped using JPA and uses `postId` as its primary key. :contentReference[oaicite:16]{index=16}
+The entity is mapped using JPA and uses `postId` as its primary key.
 
 ### Entity Structure
 
@@ -136,115 +136,7 @@ The backend exposes the following endpoints:
 | `GET` | `/jobPosts/keyword/{keyword}` | Search jobs by keyword |
 | `GET` | `/load` | Load predefined sample job data |
 
-These endpoints are implemented in `JobRestController`. :contentReference[oaicite:17]{index=17}
-
----
-
-## 🔍 Search Functionality
-
-KaamDekho supports keyword-based job searching.
-
-The backend exposes:
-
-```text
-GET /jobPosts/keyword/{keyword}
-```
-
-The search checks both:
-
-```text
-postProfile
-postDesc
-```
-
-using a Spring Data JPA derived query:
-
-```text
-findByPostProfileContainingOrPostDescContaining(...)
-```
-
-This allows users to search for jobs using either the job profile or description. :contentReference[oaicite:18]{index=18}
-
----
-
-## ➕ Create Job Post
-
-A new job post can be created using:
-
-```text
-POST /jobPost
-```
-
-Example request body:
-
-```json
-{
-  "postId": 12,
-  "postProfile": "Java Developer",
-  "postDesc": "Develop scalable backend applications.",
-  "reqExperience": 3,
-  "postTechStack": [
-    "Java",
-    "Spring Boot",
-    "PostgreSQL",
-    "Docker"
-  ]
-}
-```
-
-The controller receives the request and passes the entity to the service layer, which persists it using the JPA repository. :contentReference[oaicite:19]{index=19}
-
----
-
-## ✏️ Update Job Post
-
-Existing job posts can be updated using:
-
-```text
-PUT /jobPost
-```
-
-The service layer uses the repository's `save()` method to persist the updated entity. :contentReference[oaicite:20]{index=20}
-
----
-
-## 🗑️ Delete Job Post
-
-A job post can be removed using:
-
-```text
-DELETE /jobPost/{postId}
-```
-
-The service layer delegates the deletion to Spring Data JPA:
-
-```text
-jobRepo.deleteById(postId)
-```
-
-:contentReference[oaicite:21]{index=21}
-
----
-
-## 📚 Sample Data
-
-The backend contains a `/load` endpoint that inserts predefined job posts into the database.
-
-The sample dataset includes roles such as:
-
-* Java Developer
-* Python Developer
-* React Developer
-* Full Stack Developer
-* Machine Learning Engineer
-* Data Scientist
-* Software Developer
-* Software Engineer
-* Frontend Developer
-* Backend Developer
-* Node.js Developer
-
-The sample records contain job descriptions, required experience, and technical stacks. :contentReference[oaicite:22]{index=22}
+These endpoints are implemented in `JobRestController`.
 
 ---
 
@@ -259,7 +151,7 @@ http://localhost:3000
 https://kaam-dekho.vercel.app
 ```
 
-This allows the React application to communicate with the Spring Boot API from the browser. :contentReference[oaicite:23]{index=23}
+This allows the React application to communicate with the Spring Boot API from the browser.
 
 ---
 
@@ -305,7 +197,7 @@ KaamDekho-backend/
 └── README.md
 ```
 
-The repository follows a clear Spring Boot layered structure with controller, model, repository, service, and configuration resources. :contentReference[oaicite:24]{index=24}
+The repository follows a clear Spring Boot layered structure with controller, model, repository, service, and configuration resources.
 
 ---
 
@@ -329,7 +221,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 
-This allows Hibernate to automatically update the database schema based on the entity mappings. :contentReference[oaicite:25]{index=25}
+This allows Hibernate to automatically update the database schema based on the entity mappings.
 
 ---
 
@@ -433,7 +325,7 @@ For the deployed application, the frontend currently communicates with:
 https://kaamdekho-backend-ct8k.onrender.com
 ```
 
-The frontend uses Axios to consume the backend endpoints. :contentReference[oaicite:26]{index=26}
+The frontend uses Axios to consume the backend endpoints.
 
 ---
 
@@ -445,7 +337,7 @@ The backend is deployed on **Render**.
 
 https://kaamdekho-backend-ct8k.onrender.com
 
-The repository also includes a `Dockerfile`, allowing the application to be containerized for deployment. :contentReference[oaicite:27]{index=27}
+The repository also includes a `Dockerfile`, allowing the application to be containerized for deployment.
 
 ---
 
@@ -487,7 +379,7 @@ JobRestController
 Client
 ```
 
-This separation keeps the API layer, business/service logic, and persistence logic organized independently. :contentReference[oaicite:28]{index=28}
+This separation keeps the API layer, business/service logic, and persistence logic organized independently.
 
 ---
 
@@ -500,7 +392,7 @@ The backend can support:
 * 📝 Job-post management
 * 🗃️ CRUD-based applications
 * 🌐 REST API demonstrations
-* ☕ Spring Boot portfolio projects
+* ☕ Spring Boot projects
 * 🗄️ PostgreSQL database integration projects
 * 🔗 React + Spring Boot full-stack applications
 
@@ -518,52 +410,9 @@ Potential improvements include:
 * Advanced filtering
 * Job categories
 * Location-based search
-* Database indexing
-* DTO-based API responses
 * Global exception handling
 * API validation
-* Unit and integration tests
-* Swagger/OpenAPI documentation
-* Improved environment configuration
 * CI/CD automation
-
----
-
-## 👨‍💻 Project
-
-**KaamDekho Backend** is the server-side component of the KaamDekho full-stack job-post management application.
-
-It demonstrates the integration of:
-
-```text
-Java
-   +
-Spring Boot
-   +
-Spring Data JPA
-   +
-PostgreSQL
-   +
-REST APIs
-   +
-React Frontend
-```
-
----
-
-## ⭐ Links
-
-### Primary Portfolio Repository
-
-The **frontend repository is the primary KaamDekho repository for portfolio/resume purposes**:
-
-https://github.com/frhanahmed/KaamDekho-frontend
-
-### Frontend
-
-https://kaam-dekho.vercel.app/
-
-### Backend Repository
 
 https://github.com/frhanahmed/KaamDekho-backend
 
