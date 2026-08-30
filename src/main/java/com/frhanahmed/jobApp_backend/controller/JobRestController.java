@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "https://kaam-dekho.vercel.app",
+        "https://kaam-dekho-cmj3lpbkq-frhanahmeds-projects.vercel.app"
+})
 public class JobRestController {
 
     @Autowired
